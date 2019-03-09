@@ -16,11 +16,9 @@ const signInOrSignUpUser = (accessToken, refreshToken, profile, done) => {
     let isUser = async () => {
         let userData = await GoogleUser.findOne(user);
         if (userData) {
-            console.log('userdata', userData)
             done(null, userData);
             return;
         }
-        console.log('new userdata')
         let newUser = async () => await new GoogleUser(user).save();
         newUser();
         done(null, newUser)
@@ -34,8 +32,10 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser((userId, done) => {
-    let userToDeserialize = async () => await GoogleUser.findById(userId)
-    done(null, userToDeserialize)
+   // let userToDeserialize = async () => await GoogleUser.findById(userId)
+
+    GoogleUser.findById(userId).then( user => done(null, user))
+    //done(null, userToDeserialize)
 })
 
 let newGoogleStrategy = new GoogleStrategy({
