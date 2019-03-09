@@ -41,7 +41,8 @@ passport.deserializeUser((userId, done) => {
 let newGoogleStrategy = new GoogleStrategy({
     clientID: GOOGLE_CLIENT_ID,
     clientSecret: GOOGLE_CLIENT_SECRET,
-    callbackURL: CALLBACK_URL
+    callbackURL: CALLBACK_URL,
+    proxy: true
 },
     signInOrSignUpUser
 );
