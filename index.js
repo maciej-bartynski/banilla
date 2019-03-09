@@ -9,6 +9,15 @@ require('./services/passportConfig');
 const cookieSession = require('cookie-session')
 
 mongoose.connect(MONGODB_SHORT_SRV_CONNECTION_STRING,  { useNewUrlParser: true });
+
+
+
+
+
+
+
+
+
 const app = express();
 app.use(
     cookieSession({

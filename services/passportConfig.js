@@ -1,9 +1,9 @@
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const passport = require('passport');
 
-const GOOGLE_CLIENT_ID = require('./../config/keys').GOOGLE_CLIENT_ID;
-const GOOGLE_CLIENT_SECRET = require('./../config/keys').GOOGLE_CLIENT_SECRET;
-const CALLBACK_URL = require('./../config/keys').CALLBACK_URL;
+const GOOGLE_CLIENT_ID = require('./../config/dev').GOOGLE_CLIENT_ID;
+const GOOGLE_CLIENT_SECRET = require('./../config/dev').GOOGLE_CLIENT_SECRET;
+const CALLBACK_URL = require('./../config/dev').CALLBACK_URL;
 
 const GoogleUser = require('mongoose').model('google_user');
 
@@ -16,9 +16,11 @@ const signInOrSignUpUser = (accessToken, refreshToken, profile, done) => {
     let isUser = async () => {
         let userData = await GoogleUser.findOne(user);
         if (userData) {
+            console.log('userdata', userData)
             done(null, userData);
             return;
         }
+        console.log('new userdata')
         let newUser = async () => await new GoogleUser(user).save();
         newUser();
         done(null, newUser)
