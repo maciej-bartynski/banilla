@@ -27,12 +27,12 @@ const signInOrSignUpUser = (accessToken, refreshToken, profile, done) => {
     isUser();
 }
 
-passport.serializeUser((user, done)=>{
+passport.serializeUser((user, done) => {
     done(null, user.id)
 })
 
-passport.deserializeUser((userId, done)=>{
-    let userToDeserialize = async ()=> await GoogleUser.findById(userId)
+passport.deserializeUser((userId, done) => {
+    let userToDeserialize = async () => await GoogleUser.findById(userId)
     done(null, userToDeserialize)
 })
 
