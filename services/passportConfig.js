@@ -32,10 +32,7 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser((userId, done) => {
-   // let userToDeserialize = async () => await GoogleUser.findById(userId)
-
-    GoogleUser.findById(userId).then( user => done(null, user))
-    //done(null, userToDeserialize)
+    GoogleUser.findById(userId).then(user => done(null, user))
 })
 
 let newGoogleStrategy = new GoogleStrategy({

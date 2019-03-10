@@ -6,8 +6,6 @@ module.exports = (app) => {
         res.redirect('/current-user');
     });
 
-
-
     app.get('/current-user', (req, res) => {
         let responseData = req.user ? req.user : { "response": "no user" }
         res.send(responseData)
