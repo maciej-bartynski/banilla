@@ -1,11 +1,11 @@
 const express = require('express');
 const passport = require('passport')
-const routes = require('./routes/routes')
+const routes = require('./routes/index')
 const mongoose = require('mongoose');
 const MONGODB_SHORT_SRV_CONNECTION_STRING = require('./config/keys').MONGODB_SHORT_SRV_CONNECTION_STRING;
 const COOKIE_KEY = require('./config/keys').COOKIE_KEY;
-require('./mongoDBmodels/users');
-require('./services/passportConfig');
+require('./db/users');
+require('./services/strategyGoogle');
 const cookieSession = require('cookie-session')
 
 mongoose.connect(MONGODB_SHORT_SRV_CONNECTION_STRING,  { useNewUrlParser: true });
