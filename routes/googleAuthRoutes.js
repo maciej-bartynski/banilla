@@ -9,7 +9,7 @@ module.exports = (app) => {
 
     app.get('/logout', (req, res) => {
         req.logout();
-        let responseData = req.user ? req.user : "U R logged out"
+        let responseData = req.user ? req.user : "You've been logged out"
         res.send(responseData)
     })
 
