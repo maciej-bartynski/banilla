@@ -6,8 +6,14 @@ module.exports = (app) => {
         res.redirect('/current-user');
     });
 
+    app.get('/logout', (req, res)=>{
+        req.logout();
+        let responseData = req.user ? req.user : "U R logged out"
+        res.send(responseData)
+    })
+
     app.get('/current-user', (req, res) => {
-        let responseData = req.user ? req.user : { "response": "no user" }
+        let responseData = req.user ? req.user : "no current user"
         res.send(responseData)
     })
 }
